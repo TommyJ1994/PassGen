@@ -1,4 +1,4 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $stateParams) {
+.controller('AppCtrl', function($scope, $stateParams) {
 });

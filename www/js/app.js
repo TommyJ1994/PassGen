@@ -20,17 +20,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   $stateProvider
 
-  .state('dashboard', {
-    url: '/dashboard',
-    views: {
-      'dashboard': {
-        templateUrl: 'templates/dashboard.html',
-        controller: 'DashCtrl'
-      }
-    }
+  .state('app', {
+    url: '/app',
+        templateUrl: 'templates/app.html',
+        controller: 'AppCtrl'
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/dashboard');
+  $urlRouterProvider.otherwise('/app');
 
 });
