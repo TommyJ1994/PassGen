@@ -1,6 +1,6 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngCordova'])
 
-.controller('AppCtrl', function($scope, $stateParams, $cordovaCapture, Environments) {
+.controller('AppCtrl', function($scope, $stateParams, Environments) {
 
   /*
   * Main method which triggers the generation of a password by invoking the generators.

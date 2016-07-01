@@ -1,6 +1,6 @@
 angular.module('starter.services', [])
 
-.factory('Environments', function() {
+.factory('Environments', function($cordovaCapture) {
 
   var factory = {};
 
