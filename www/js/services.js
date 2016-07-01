@@ -23,9 +23,15 @@ angular.module('starter.services', [])
         });
 		}
 
-    factory.getHash = function()
+    /*
+    * Generate SHA3 hash value.
+    * @param file - the file to generate a hash value for.
+    * @return - the hash value of the file.
+    */
+    factory.getHash = function(file)
     {
-
+      var hash = CryptoJS.SHA3(file);
+      return hash.toString();
     }
 
     factory.savePassword = function()
