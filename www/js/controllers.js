@@ -16,7 +16,7 @@ angular.module('starter.controllers', [])
   function invokeAudioGenerator()
   {
     var audio = Environments.captureAudio();
-    var audioHash = Environments.getHash(audio);
+    var audioHash = Environments.computeHash(audio);
   }
 
 });

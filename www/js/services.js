@@ -28,18 +28,46 @@ angular.module('starter.services', [])
     * @param file - the file to generate a hash value for.
     * @return - the hash value of the file.
     */
-    factory.getHash = function(file)
+    factory.computeHash = function(file)
     {
       var hash = CryptoJS.SHA3(file);
       return hash.toString();
     }
 
-    factory.savePassword = function()
+    /*
+    * Encrypts a piece of text.
+    * @param text - the text to encrypt.
+    * @return - the encrypted text.
+    */
+    factory.encrypt = function(text)
     {
 
     }
 
-    factory.encrypt = function()
+    /*
+    * Saves a password to local storage.
+    * @param key - the key name.
+    * @param value - the password data.
+    */
+    factory.savePassword = function(key, value)
+    {
+
+    }
+
+    /*
+    * Removes a password to local storage.
+    * @param key - the key name.
+    */
+    factory.removePassword = function(key)
+    {
+
+    }
+
+    /*
+    * Retrieves passwords from local storage.
+    * @return - the passwords.
+    */
+    factory.retrievePasswords = function()
     {
 
     }
