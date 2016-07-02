@@ -4,6 +4,9 @@ angular.module('starter.services', [])
 
   var factory = {};
 
+  /*
+   * Capture audio.
+  */
 	factory.captureAudio = function() {
       var options = { limit: 1, duration: 10 };
       $cordovaCapture.captureAudio(options).then(function(audioData) {
@@ -13,7 +16,11 @@ angular.module('starter.services', [])
       });
 		}
 
-	factory.captureImage = function() {
+   /*
+    * Capture an image.
+   */
+	 factory.captureImage = function()
+    {
         var options = { limit: 1 };
 
         $cordovaCapture.captureImage(options).then(function(imageData) {

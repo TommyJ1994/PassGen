@@ -11,7 +11,7 @@ angular.module('starter.controllers', ['ngCordova'])
   }
 
   /*
-  *
+  * Calls audio capture in Environments service.
   */
   function invokeAudioGenerator()
   {
