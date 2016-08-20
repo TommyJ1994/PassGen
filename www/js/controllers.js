@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ['ngCordova'])
+angular.module('starter')
 
 .controller('AppCtrl', function($scope, $stateParams, Environments) {
 
@@ -8,7 +8,7 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.generatePassword = function()
   {
     invokeAudioGenerator();
-  }
+  };
 
   /*
   * Calls audio capture in Environments service.

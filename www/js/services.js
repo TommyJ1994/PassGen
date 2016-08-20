@@ -1,12 +1,12 @@
-angular.module('starter.services', [])
+angular.module('starter')
 
 .factory('Environments', function($cordovaCapture) {
 
   var factory = {};
 
-  /*
-   * Capture audio.
-  */
+    /*
+     * Capture audio.
+    */
 	factory.captureAudio = function() {
       var options = { limit: 1, duration: 10 };
       $cordovaCapture.captureAudio(options).then(function(audioData) {
@@ -14,7 +14,7 @@ angular.module('starter.services', [])
       }, function(err) {
         // An error occurred. Show a message to the user
       });
-		}
+		};
 
    /*
     * Capture an image.
@@ -28,7 +28,7 @@ angular.module('starter.services', [])
         }, function(err) {
           // An error occurred. Show a message to the user
         });
-		}
+		};
 
     /*
     * Generate SHA3 hash value.
@@ -39,7 +39,7 @@ angular.module('starter.services', [])
     {
       var hash = CryptoJS.SHA3(file);
       return hash.toString();
-    }
+    };
 
     /*
     * Encrypts a piece of text.
@@ -49,7 +49,7 @@ angular.module('starter.services', [])
     factory.encrypt = function(text)
     {
 
-    }
+    };
 
     /*
     * Saves a password to local storage.
@@ -59,7 +59,7 @@ angular.module('starter.services', [])
     factory.savePassword = function(key, value)
     {
 
-    }
+    };
 
     /*
     * Removes a password to local storage.
@@ -68,7 +68,7 @@ angular.module('starter.services', [])
     factory.removePassword = function(key)
     {
 
-    }
+    };
 
     /*
     * Retrieves passwords from local storage.
@@ -77,7 +77,7 @@ angular.module('starter.services', [])
     factory.retrievePasswords = function()
     {
 
-    }
+    };
 
 	return factory;
 
