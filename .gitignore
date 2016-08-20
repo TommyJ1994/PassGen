@@ -2,3 +2,6 @@
 build/
 build.log
 platforms
+node_modules
+.gitignore
+.eslintrc.json

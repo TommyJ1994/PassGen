@@ -1,84 +1,112 @@
 angular.module('starter')
 
-.factory('Environments', function($cordovaCapture) {
+.factory('Environments', function($cordovaCapture, $cordovaDeviceMotion, $cordovaFile) {
 
   var factory = {};
 
     /*
      * Capture audio.
     */
-	factory.captureAudio = function() {
-      var options = { limit: 1, duration: 10 };
-      $cordovaCapture.captureAudio(options).then(function(audioData) {
-        // Success! Audio data is here
-      }, function(err) {
-        // An error occurred. Show a message to the user
-      });
-		};
+
+  factory.captureAudio = function() {
+    var options = { limit: 1, duration: 3 };
+    $cordovaCapture.captureAudio(options).then(function(audioData) {
+      console.log(audioData);
+      factory.computeHash(audioData);
+    }, function(err) {
+      alert(err);
+    });
+  };
 
    /*
     * Capture an image.
    */
-	 factory.captureImage = function()
-    {
-        var options = { limit: 1 };
+  factory.captureImage = function() {
+    var options = { limit: 1 };
 
-        $cordovaCapture.captureImage(options).then(function(imageData) {
-          // Success! Image data is here
-        }, function(err) {
-          // An error occurred. Show a message to the user
-        });
-		};
-
-    /*
-    * Generate SHA3 hash value.
-    * @param file - the file to generate a hash value for.
-    * @return - the hash value of the file.
-    */
-    factory.computeHash = function(file)
-    {
-      var hash = CryptoJS.SHA3(file);
-      return hash.toString();
-    };
+    $cordovaCapture.captureImage(options).then(function(imageData) {
+      factory.computeHash(imageData);
+    }, function(err) {
+      alert(err);
+    });
+  };
 
     /*
-    * Encrypts a piece of text.
-    * @param text - the text to encrypt.
-    * @return - the encrypted text.
+     * Capture motion.
     */
-    factory.encrypt = function(text)
-    {
+  factory.captureMotion = function() {
+    function onSuccess(acceleration) {
+      return {x: acceleration.x, y: acceleration.y, z: acceleration.z};
+    }
 
-    };
+    function onError() {
+      return null;
+    }
 
-    /*
-    * Saves a password to local storage.
-    * @param key - the key name.
-    * @param value - the password data.
-    */
-    factory.savePassword = function(key, value)
-    {
+    return $cordovaDeviceMotion.getCurrentAcceleration(onSuccess, onError);
+  };
 
-    };
+  /*
+  * Generate SHA3 hash value.
+  * @param object - the object to generate a hash value for.
+  * @return - the hash value of the file.
+  */
+  factory.computeHash = function(object) {
+    var objectContent = factory.readFile("", object["0"].fullPath);
+    console.log(objectContent);
+    var hash = CryptoJS.SHA3(objectContent);
+    return hash.toString();
+  };
 
-    /*
-    * Removes a password to local storage.
-    * @param key - the key name.
-    */
-    factory.removePassword = function(key)
-    {
+  /*
+  * Read the file from disk.
+  * @param path - The path to the file
+  * @param file - Name of file to read from
+  * @return - the file object
+  */
+  factory.readFile = function(path, file) {
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
+    // Great success! All the File APIs are supported.
+    } else {
+      alert('The File APIs are not fully supported in this browser.');
+    }
+    return $cordovaFile.readAsText(path, file);
+  };
 
-    };
+  /*
+  * Encrypts a piece of text.
+  * @param text - the text to encrypt.
+  * @return - the encrypted text.
+  */
+  factory.encrypt = function(text) {
 
-    /*
-    * Retrieves passwords from local storage.
-    * @return - the passwords.
-    */
-    factory.retrievePasswords = function()
-    {
+  };
 
-    };
+  /*
+  * Saves a password to local storage.
+  * @param key - the key name.
+  * @param value - the password data.
+  */
+  factory.savePassword = function(key, value) {
 
-	return factory;
+  };
+
+  /*
+  * Removes a password to local storage.
+  * @param key - the key name.
+  */
+  factory.removePassword = function(key) {
+
+  };
+
+  /*
+  * Retrieves passwords from local storage.
+  * @return - the passwords.
+  */
+  factory.retrievePasswords = function() {
+
+  };
+
+  return factory;
 
 });
